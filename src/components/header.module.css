@@ -1,41 +1,162 @@
-/* header.module.css */
-
+/* ヘッダー全体 */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #282c34;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 30px;
+    /* background-color: rgba(30, 30, 30, 0.9);  背景画像を使用するためコメントアウトまたは削除 */
+    color: #ffffff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    border-bottom: 1px solid #444;
+
+    /* --- 背景画像の設定を追加 --- */
+    background-image: url('../assets/PingPang.png');
+    /* 画像のパス */
+    background-size: cover;
+    /* ヘッダー全体を覆うように拡大縮小 */
+    background-position: center;
+    /* 画像を中央に配置 */
+    background-repeat: no-repeat;
+    /* 画像の繰り返しをなしに */
+    /* 画像の視認性を上げるためにオーバーレイを追加 (任意) */
+    background-blend-mode: multiply;
+    /* 背景画像と背景色を混ぜる */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* 暗いオーバーレイ */
+    /* --- ここまで背景画像の設定 --- */
 }
 
+/* ロゴとPCナビをまとめるコンテナ */
+.leftContainer {
+    display: flex;
+    align-items: center;
+}
+
+/* ロゴ */
 .logo a {
-    color: white;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    margin-right: 40px;
+}
+
+/* PC用ナビゲーション */
+.pcNav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+.pcNav a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.3s ease-in-out;
+}
+
+.pcNav a:hover {
+    color: #00c3ff;
+}
+
+/* --- ハンバーガーメニュー関連 --- */
+
+/* ハンバーガーアイコン */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ハンバーガーが開いた時のアニメーション */
+.hamburger.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* モバイル用ナビゲーション（ハンバーガーの中身） */
+.mobileNav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* background-color: rgba(30, 30, 30, 0.98); モバイルメニューの背景も画像にしたい場合は調整 */
+    /* モバイルメニューも背景画像を使う場合 */
+    background-image: url('../assets/PingPang.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.85);
+    /* PC版より濃いオーバーレイで文字を読みやすく */
+    /* --- ここまでモバイルメニューの背景画像設定 --- */
+
+    z-index: 1001;
+    overflow-y: auto;
+}
+
+.mobileNav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileNav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.mobileNav li {
+    margin: 15px 0;
+}
+
+.mobileNav a {
+    color: #f0f0f0;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.navList {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
+/* --- レスポンシブ対応 --- */
+@media (max-width: 1024px) {
+    .pcNav {
+        display: none;
+    }
 
-.navItem {
-    margin-left: 2rem;
-}
-
-.navItem a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.navItem a:hover {
-    color: #61dafb;
-    /* Reactのロゴカラー */
+    .hamburger {
+        display: flex;
+    }
 }
