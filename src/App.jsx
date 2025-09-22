@@ -7,14 +7,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <main style={{ paddingTop: '80px', padding: '20px' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/description" element={<Description />} />
-        </Routes>
+      <main style={{ paddingTop: '80px' }}>
+        <Header />
       </main>
-      <Home />
+      <Routes>
+        <Route path="/wkkw/" element={<Home />} />
+        <Route path="/wkkw/description" element={<Description />} />
+        {/* <Route path="/wkkw/recruitment" element={<Recruitment />} /> */}
+        {/* <Route path="/wkkw/extensions" element={<Extensions />} /> */}
+      </Routes>
     </div>
   );
 }

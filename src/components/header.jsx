@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // ★ react-router-dom から Link をインポート
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import logoImage from '../assets/logo.png';
 
 // PCで常に表示する主要メニュー
 const mainMenuItems = [
-    { href: '/', label: 'カレンダー' },
+    { href: '/wkkw/', label: 'カレンダー' },
     { href: 'https://forms.gle/Dq2ntBekUoPsYE9h7', label: '新規ツアー' },
     { href: 'https://forms.gle/rP8oDgJ5eWkc6bgb8', label: 'ツアー削除' },
-    { href: '/description', label: '使い方説明' },
+    { href: '/wkkw/description', label: '使い方説明' },
 ];
 
 // メニューで表示する追加メニュー
 const extraMenuItems = [
-    { href: '/request', label: '公募中の一覧' },
-    { href: '/import', label: '拡張機能' },
-    { href: '/faq', label: 'Q&A' },
-    { href: '/twitter', label: '問い合わせ' },
+    { href: '/wkkw/recruitment', label: '公募中の一覧' },
+    { href: '/wkkw/extensions', label: '拡張機能' },
+    // { href: '/wkkw/faq', label: 'Q&A' },
+    { href: '/wkkw/inquiry', label: '問い合わせ' },
 ];
 
 // 全てのメニュー項目
@@ -29,9 +29,20 @@ const Header = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    // ★ リンクを条件に応じて出し分けるためのコンポーネント
-    const NavLink = ({ href, children }) => {
-        // hrefが 'http' で始まる場合は外部リンクと判断
+    // モーダル内のリンク専用のコンポーネント (クリックでメニューを閉じる機能付き)
+    const ModalNavLink = ({ href, children }) => {
+        if (href.startsWith('http')) {
+            return (
+                <a href={href} target="_blank" rel="noopener noreferrer" onClick={toggleMenu}>
+                    {children}
+                </a>
+            );
+        }
+        return <Link to={href} onClick={toggleMenu}>{children}</Link>;
+    };
+
+    // PCの通常メニュー用のリンクコンポーネント (クリックでメニューを閉じない)
+    const PcNavLink = ({ href, children }) => {
         if (href.startsWith('http')) {
             return (
                 <a href={href} target="_blank" rel="noopener noreferrer">
@@ -39,16 +50,14 @@ const Header = () => {
                 </a>
             );
         }
-        // それ以外は内部リンクとしてLinkコンポーネントを使用
         return <Link to={href}>{children}</Link>;
     };
 
     return (
         <header className={styles.header}>
             <div className={styles.leftContainer}>
-                {/* ロゴ */}
                 <div className={styles.logo}>
-                    <Link to="/"> {/* ロゴは必ず内部リンクのトップページへ */}
+                    <Link to="/wkkw/">
                         <img src={logoImage} alt="Kite Logo" />
                     </Link>
                 </div>
@@ -58,7 +67,7 @@ const Header = () => {
                     <ul>
                         {mainMenuItems.map((item) => (
                             <li key={item.label}>
-                                <NavLink href={item.href}>{item.label}</NavLink>
+                                <PcNavLink href={item.href}>{item.label}</PcNavLink>
                             </li>
                         ))}
                         <li>
@@ -84,7 +93,7 @@ const Header = () => {
                         <ul>
                             {allMenuItems.map((item) => (
                                 <li key={item.label}>
-                                    <NavLink href={item.href}>{item.label}</NavLink>
+                                    <ModalNavLink href={item.href}>{item.label}</ModalNavLink>
                                 </li>
                             ))}
                         </ul>
