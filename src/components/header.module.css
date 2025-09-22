@@ -4,7 +4,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    /* background-color: rgba(30, 30, 30, 0.9);  背景画像を使用するためコメントアウトまたは削除 */
     color: #ffffff;
     width: 100%;
     position: fixed;
@@ -13,22 +12,12 @@
     z-index: 1000;
     box-sizing: border-box;
     border-bottom: 1px solid #444;
-
-    /* --- 背景画像の設定を追加 --- */
     background-image: url('../assets/PingPang.png');
-    /* 画像のパス */
     background-size: cover;
-    /* ヘッダー全体を覆うように拡大縮小 */
     background-position: center;
-    /* 画像を中央に配置 */
     background-repeat: no-repeat;
-    /* 画像の繰り返しをなしに */
-    /* 画像の視認性を上げるためにオーバーレイを追加 (任意) */
     background-blend-mode: multiply;
-    /* 背景画像と背景色を混ぜる */
     background-color: rgba(0, 0, 0, 0.6);
-    /* 暗いオーバーレイ */
-    /* --- ここまで背景画像の設定 --- */
 }
 
 /* ロゴとPCナビをまとめるコンテナ */
@@ -50,6 +39,7 @@
 /* PC用ナビゲーション */
 .pcNav ul {
     display: flex;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -69,7 +59,92 @@
     color: #00c3ff;
 }
 
-/* --- ハンバーガーメニュー関連 --- */
+/* 「...」ボタンのスタイル */
+.moreMenuButton {
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+.moreMenuButton:hover {
+    color: #00c3ff;
+}
+
+.menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuContent {
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    max-width: 350px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    background-image: url('../assets/PingPang.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.menuContent ul {
+    list-style: none;
+    padding: 10px 10px;
+    margin: 0;
+    text-align: center;
+
+
+    /* すりガラス効果 */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    /* すりガラスの見た目を調整 */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* 少し白っぽくして効果を強調 */
+    border-radius: 4px;
+    /* 親要素より少し小さい角丸 */
+}
+
+.menuContent li {
+    margin-bottom: 15px;
+}
+
+.menuContent li:last-child {
+    margin-bottom: 0;
+}
+
+.menuContent a {
+    color: #ffffff;
+    /* 文字を白に */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    /* 文字に少し影をつけて読みやすく */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+    white-space: nowrap;
+}
+
+.menuContent a:hover {
+    color: #00c3ff;
+}
+
 
 /* ハンバーガーアイコン */
 .hamburger {
@@ -103,7 +178,7 @@
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* モバイル用ナビゲーション（ハンバーガーの中身） */
+/* PC/モバイル共通の全画面メニュー */
 .mobileNav {
     display: none;
     position: fixed;
@@ -111,17 +186,12 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    /* background-color: rgba(30, 30, 30, 0.98); モバイルメニューの背景も画像にしたい場合は調整 */
-    /* モバイルメニューも背景画像を使う場合 */
     background-image: url('../assets/PingPang.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
     background-color: rgba(0, 0, 0, 0.85);
-    /* PC版より濃いオーバーレイで文字を読みやすく */
-    /* --- ここまでモバイルメニューの背景画像設定 --- */
-
     z-index: 1001;
     overflow-y: auto;
 }
@@ -150,7 +220,7 @@
     font-weight: bold;
 }
 
-/* --- レスポンシブ対応 --- */
+/* レスポンシブ対応 */
 @media (max-width: 1024px) {
     .pcNav {
         display: none;
