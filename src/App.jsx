@@ -1,16 +1,20 @@
-// App.jsx (使用例)
-
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import './App.css'; // アプリ全体のスタイルなど
+import Home from './pages/Home';
+import Description from './pages/Description';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main style={{ paddingTop: '80px' }}>
-        <h1>ようこそ！</h1>
-        <p>これはメインコンテンツのエリアです。</p>
+      <main style={{ paddingTop: '80px', padding: '20px' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/description" element={<Description />} />
+        </Routes>
       </main>
+      <Home />
     </div>
   );
 }

@@ -3,8 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    color: #ffffff;
+    padding: 15px 15px 15px 30px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -28,12 +27,16 @@
 
 /* ロゴ */
 .logo a {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #ffffff;
-    text-decoration: none;
-    letter-spacing: 1.5px;
-    margin-right: 40px;
+    display: block;
+    /* aタグの領域を確保 */
+}
+
+/* ★ ロゴ画像用のスタイルを追加 */
+.logo img {
+    height: 40px;
+    /* ロゴの高さを指定 (幅は自動で調整されます) */
+    display: block;
+    /* 画像の下にできる余分な余白をなくす */
 }
 
 /* PC用ナビゲーション */
