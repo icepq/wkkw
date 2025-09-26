@@ -7,8 +7,8 @@ const Home = () => {
         <div>
             <h1>非公式サイトです</h1>
             <a href="http://world.kiite.jp">Kiite World</a><br />
-            <a href="https://note.com/mityamk02/n/n044d7cec2f3f">Kiite Worldとは</a><br />
-            <a href="https://icepq.github.io/wkkw/description">WKKW（非公式サイト）とは</a><br /><br />
+            <a href="https://note.com/mityamk02/n/n044d7cec2f3f" target="_blank" rel="noopener noreferrer">Kiite Worldとは</a>
+            <a href="https://icepq.github.io/wkkw/description" target="_blank" rel="noopener noreferrer">WKKW（非公式サイト）とは</a><br /><br />
 
             <Calendar />
 

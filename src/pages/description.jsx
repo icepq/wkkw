@@ -1,3 +1,4 @@
+// 説明ページ
 // import styles from './Description.module.css';
 
 const Description = () => {
