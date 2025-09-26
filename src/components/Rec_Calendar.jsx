@@ -15,7 +15,7 @@ const buildCalendarUrl = (viewMode) => {
         src: [
             "MDQxZDAzZmUyMDY4OTc2M2I3MDhlYjVlMmE0NWYzMGY0NjY1NTk0ZDNmMGM2MThjMmEzYzAzNWZhZDgzZjQwMUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
         ],
-        color: ["#039be5", "#7cb342"],
+        color: ["#7cb342"],
     };
 
     const query = Object.entries(params)
@@ -32,10 +32,7 @@ const buildCalendarUrl = (viewMode) => {
 
 const Rec_Calendar = () => {
     const [viewMode, setViewMode] = useState('AGENDA');
-
-    // viewModeが変更された時だけURLを再計算するようにuseMemoフックを使用
-    const calendarUrl = useMemo(() => buildCalendarUrl(viewMode), [viewMode]);
-
+    const calendarUrl = buildCalendarUrl(viewMode);
     return (
         <div>
             <iframe

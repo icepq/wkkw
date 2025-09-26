@@ -1,4 +1,5 @@
 // 問い合わせページ
+import React from 'react';
 // import style from './Inquiry.module.css';
 
 const Inquiry = () => {
