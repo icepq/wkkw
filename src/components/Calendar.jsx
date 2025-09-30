@@ -32,10 +32,10 @@ const buildCalendarUrl = (viewMode) => {
 };
 
 const Calendar = () => {
-    const [viewMode, setViewMode] = useState('MONTH');
+    const [viewMode, setViewMode] = useState('AGENDA');
 
     const toggleViewMode = () => {
-        setViewMode(currentMode => (currentMode === 'MONTH' ? 'AGENDA' : 'MONTH'));
+        setViewMode(currentMode => (currentMode === 'AGENDA' ? 'AGENDA' : 'MONTH'));
     };
 
     // viewModeが変更された時だけURLを再計算するようにuseMemoフックを使用
@@ -50,6 +50,13 @@ const Calendar = () => {
                 >
                     表示切替
                 </button>
+                <span fontSize="0.9rem" style={{ marginLeft: '12px' }}>
+                    <span style={{ color: 'rgb(69, 153, 220)' }}>●</span>
+                    <span>はツアー予定  / </span>
+                    {/* <span style={{ marginLeft: '16px' }}> </span> */}
+                    <span style={{ color: 'rgb(139, 179, 85)' }}>●</span>
+                    <span>は様々な締切日</span><br />
+                </span>
             </div>
 
             <iframe

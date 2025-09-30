@@ -5,18 +5,18 @@ import logoImage from '../assets/logo.png';
 
 // PCで常に表示する主要メニュー
 const mainMenuItems = [
-    { href: '/wkkw/', label: 'カレンダー' },
+    { href: '/', label: 'カレンダー' },
     { href: 'https://forms.gle/Dq2ntBekUoPsYE9h7', label: '新規ツアー' },
     { href: 'https://forms.gle/rP8oDgJ5eWkc6bgb8', label: 'ツアー削除' },
-    { href: '/wkkw/description', label: '使い方説明' },
+    { href: '/description', label: '使い方説明' },
 ];
 
 // メニューで表示する追加メニュー
 const extraMenuItems = [
-    { href: '/wkkw/recruitment', label: '公募中の一覧' },
-    { href: '/wkkw/extensions', label: '拡張機能' },
-    // { href: '/wkkw/faq', label: 'Q&A' },
-    { href: '/wkkw/inquiry', label: '問い合わせ' },
+    { href: '/recruitment', label: '公募中の一覧' },
+    { href: '/extensions', label: '拡張機能' },
+    // { href: '/faq', label: 'Q&A' },
+    { href: '/inquiry', label: '問い合わせ' },
 ];
 
 // 全てのメニュー項目
@@ -57,7 +57,7 @@ const Header = () => {
         <header className={styles.header}>
             <div className={styles.leftContainer}>
                 <div className={styles.logo}>
-                    <Link to="/wkkw/">
+                    <Link to="/">
                         <img src={logoImage} alt="Kite Logo" />
                     </Link>
                 </div>
